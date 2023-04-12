@@ -69,14 +69,22 @@ public class EmpresaService {
 
     public ApiResponse<EmpresaDTO> updateEmpresa(EmpresaDTO empresaDTO) {
         ApiResponse<EmpresaDTO> apiResponse = new ApiResponse<>();
-
         EmpresaEntity empresaEntity = this.empresaRepository.findById(empresaDTO.getId()).get();
-
         empresaEntity.setName(empresaDTO.getName().toUpperCase());
 
         apiResponse.setData(this.empresaRepository.save(empresaEntity).getEmpresaDTO());
         apiResponse.setSuccessful(true);
         apiResponse.setMessage("Empresa actualizada");
+        return apiResponse;
+    }
+
+    public ApiResponse<EmpresaDTO> deleteEmpresa(String id){
+        ApiResponse<EmpresaDTO> apiResponse = new ApiResponse<>();
+        EmpresaEntity empresaEntity = this.empresaRepository.findById(id).get();
+        this.empresaRepository.delete(empresaEntity);
+        apiResponse.setData(empresaEntity.getEmpresaDTO());
+        apiResponse.setSuccessful(true);
+        apiResponse.setMessage("Empresa eliminada");
         return apiResponse;
     }
 }

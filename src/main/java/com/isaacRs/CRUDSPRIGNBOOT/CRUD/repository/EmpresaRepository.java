@@ -17,7 +17,7 @@ public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Integer>
     @Query(value = "SELECT count(e) FROM EmpresaEntity e ")
     Integer countAllEmpresas();
 
-    @Query(value = "SELECT count(e) FROM EmpresaEntity e " +
+    @Query(value = "SELECT e FROM EmpresaEntity e " +
             "WHERE e.uniqueIdentifier = :id ")
     Optional<EmpresaEntity> findById(String id);
 }

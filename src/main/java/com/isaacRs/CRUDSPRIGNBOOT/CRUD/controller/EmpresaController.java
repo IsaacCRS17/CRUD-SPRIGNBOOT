@@ -23,11 +23,21 @@ public class EmpresaController {
 
     @GetMapping("{id}")
     public ApiResponse<EmpresaDTO> one(@PathVariable String id){
-        return  this.empresaService.getOneEmpresa(id);
+        return this.empresaService.getOneEmpresa(id);
     }
 
     @PostMapping
     public ApiResponse<EmpresaDTO> add(@Valid @RequestBody EmpresaDTO empresaDTO){
         return this.empresaService.addEmpresa(empresaDTO);
+    }
+
+    @PutMapping
+    public ApiResponse<EmpresaDTO> update(@Valid @RequestBody EmpresaDTO empresaDTO){
+        return this.empresaService.updateEmpresa(empresaDTO);
+    }
+
+    @DeleteMapping("{id}")
+    public ApiResponse<EmpresaDTO> delete(@PathVariable String id){
+        return this.empresaService.deleteEmpresa(id);
     }
 }

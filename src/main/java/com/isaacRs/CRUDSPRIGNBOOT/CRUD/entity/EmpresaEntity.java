@@ -18,7 +18,6 @@ public class EmpresaEntity {
     @Column(name = "id_empresa", unique = true, nullable = false)
     private int id;
 
-    @NotBlank
     @Column(name = "uniqueIdentifier_empresa", length = 40)
     private String uniqueIdentifier;
 
@@ -26,7 +25,6 @@ public class EmpresaEntity {
     @Column(name = "name_empresa", length = 10)
     private String name;
 
-    @NotNull
     @JsonFormat(pattern = "dd-MM-yyy")
     private LocalDate dateCreate;
 
